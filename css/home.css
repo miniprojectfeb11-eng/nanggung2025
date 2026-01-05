@@ -1,0 +1,161 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6fb1fc, #ff9a9e);
+    color: #333;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================= HEADER ================= */
+.hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    color: white;
+}
+
+.hero h1 {
+    margin-bottom: 6px;
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.hero p {
+    font-size: 14px;
+    opacity: 0.9;
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* ================= BOX  ================= */
+
+.wrapper {
+    padding: 20px;
+}
+
+.grid {
+    display: grid;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 769px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ================= CARD ================= */
+
+.card {
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform .3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 14px;
+    background: rgba(255,255,255,0.7);
+    flex-grow: 1;
+}
+
+.card-content h3 {
+    margin: 0;
+    font-size: 15px;
+    color: #355c7d;
+}
+
+.card-content p {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #555;
+}
+
+/* ================= HEART BACKGROUND ================= */
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.heart {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: rgba(255,255,255,0.7);
+    transform: rotate(45deg);
+    animation: fall linear infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: inherit;
+    border-radius: 50%;
+}
+
+.heart::before { top: -7px; }
+.heart::after { left: -7px; }
+
+@keyframes fall {
+    from { transform: translateY(-10vh) rotate(45deg); }
+    to { transform: translateY(110vh) rotate(45deg); }
+}
+
+/* ================= FOOTER STAY AT BOTTOM ================= */
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    padding: 40px 0 20px; /* Beri jarak atas lebih lebar agar estetik */
+    background: transparent; /* Tanpa background blur karena sudah di bawah */
+    
+    /* Animasi Fade In */
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+.footer-bottom.visible {
+    opacity: 1;
+}
+
+.footer-bottom p {
+    margin: 0 !important;
+    font-size: 11px;
+    color: white; /* Atau sesuaikan dengan warna teks di halamanmu */
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}

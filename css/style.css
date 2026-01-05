@@ -1,0 +1,174 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.title-wrap img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6fb1fc, #ff9a9e);
+    display: flex;
+    flex-direction: column; /* Menumpuk elemen secara vertikal */
+    justify-content: center; /* Menaruh kartu di tengah secara vertikal */
+    align-items: center;    /* Menaruh kartu di tengah secara horizontal */
+    overflow: hidden;
+}
+
+.container {
+    flex: 1; /* Mengambil ruang kosong agar footer terdorong ke paling bawah */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ================= CARD ================= */
+
+.card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 45px 35px;
+    border-radius: 22px;
+    width: 90%;
+    max-width: 340px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1.4s ease;
+    z-index: 2;
+}
+
+h1 {
+    color: #355c7d;
+    margin-bottom: 12px;
+}
+
+p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 18px;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #ff7aa2;
+}
+
+button {
+    margin-top: 18px;
+    padding: 13px;
+    width: 100%;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #ff7aa2, #ff4f81);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+#error {
+    margin-top: 12px;
+    color: #ff4f81;
+    font-size: 13px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ================= HEART BACKGROUND ================= */
+
+.heart {
+    position: absolute;
+    bottom: -20px;
+    width: 20px;
+    height: 20px;
+    background: pink;
+    transform: rotate(45deg);
+    animation: floatUp 6s linear infinite;
+    opacity: 0.8;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: inherit;
+    border-radius: 50%;
+}
+
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    left: -10px;
+    top: 0;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* ================= FOOTER STAY AT BOTTOM ================= */
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    padding: 40px 0 20px; /* Beri jarak atas lebih lebar agar estetik */
+    background: transparent; /* Tanpa background blur karena sudah di bawah */
+    
+    /* Animasi Fade In */
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+.footer-bottom.visible {
+    opacity: 1;
+}
+
+.footer-bottom p {
+    margin: 0 !important;
+    font-size: 11px;
+    color: white; /* Atau sesuaikan dengan warna teks di halamanmu */
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}

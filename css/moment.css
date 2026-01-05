@@ -1,0 +1,198 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6fb1fc, #ff9a9e);
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.container {
+    flex: 1; 
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    align-items: center; 
+}
+
+/* ================= HEART BACKGROUND ================= */
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: rgba(255,255,255,0.7);
+    transform: rotate(45deg);
+    animation: fall linear infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: inherit;
+    border-radius: 50%;
+}
+
+.heart::before { top: -7px; }
+.heart::after { left: -7px; }
+
+@keyframes fall {
+    from { transform: translateY(-10vh) rotate(45deg); }
+    to { transform: translateY(110vh) rotate(45deg); }
+}
+
+/* ================= LAYOUT ================= */
+.container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    align-items: flex-start;
+}
+
+.card {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 24px;
+    padding: 30px;
+    max-width: 720px;
+    width: 100%;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.2);
+    animation: fadeIn 1s ease;
+}
+
+h1 {
+    color: #355c7d;
+    margin-bottom: 4px;
+}
+
+.date {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 16px;
+}
+
+.note {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* ================= SLIDER ================= */
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.slider {
+    overflow: hidden;
+    border-radius: 18px;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.45s ease;
+}
+
+.slides img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Arrows */
+.nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.85);
+    font-size: 26px;
+    cursor: pointer;
+    z-index: 5;
+    color: #ff4f81;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+.nav.prev { left: 10px; }
+.nav.next { right: 10px; }
+
+/* Dots */
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.dots span {
+    width: 8px;
+    height: 8px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dots span.active {
+    background: #ff4f81;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 12px;
+    text-decoration: none;
+    color: #ff4f81;
+    font-size: 14px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= FOOTER STAY AT BOTTOM ================= */
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    padding: 40px 0 20px; /* Beri jarak atas lebih lebar agar estetik */
+    background: transparent; /* Tanpa background blur karena sudah di bawah */
+    
+    /* Animasi Fade In */
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+.footer-bottom.visible {
+    opacity: 1;
+}
+
+.footer-bottom p {
+    margin: 0 !important;
+    font-size: 11px;
+    color: white; /* Atau sesuaikan dengan warna teks di halamanmu */
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
